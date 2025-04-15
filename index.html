@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XDR AGENCY | Premium IT Solutions & Digital Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        },
+                        dark: '#0f172a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Lexend', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in': 'fadeIn 1.5s ease-out forwards',
+                        'slide-up': 'slideUp 1s ease-out forwards',
+                        'slide-right': 'slideRight 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(50px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        slideRight: {
+                            '0%': { transform: 'translateX(-50px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' },
+                        },
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lexend:wght@400;500;600;700&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #0ea5e9 0%, #6d28d9 100%);
+        }
+        
+        .bg-gradient-secondary {
+            background: linear-gradient(135deg, #7c3aed 0%, #0ea5e9 100%);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #0ea5e9 0%, #6d28d9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .service-card {
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(109, 40, 217, 0.15) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+        
+        .service-icon {
+            transition: all 0.4s ease;
+        }
+        
+        .portfolio-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .portfolio-item:hover::before {
+            opacity: 1;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-item:hover .portfolio-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .portfolio-content {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: -1;
+            animation: blob-animation 15s infinite alternate;
+        }
+        
+        @keyframes blob-animation {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(30px, -50px) scale(1.1);
+            }
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+        }
+        
+        .testimonial-slider {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .testimonial-slide {
+            flex: 0 0 100%;
+        }
+        
+        @media (min-width: 768px) {
+            .testimonial-slide {
+                flex: 0 0 50%;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .testimonial-slide {
+                flex: 0 0 33.333333%;
+            }
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #0ea5e9 0%, #6d28d9 100%);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .btn-gradient {
+            background-size: 200% auto;
+            transition: all 0.5s ease;
+        }
+        
+        .btn-gradient:hover {
+            background-position: right center;
+        }
+        
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 overflow-x-hidden">
+    <!-- Background Blobs -->
+    <div class="blob bg-primary-300/30 w-[500px] h-[500px] top-0 left-0"></div>
+    <div class="blob bg-secondary-300/20 w-[600px] h-[600px] top-[30%] right-0"></div>
+    <div class="blob bg-primary-400/20 w-[700px] h-[700px] bottom-0 left-[20%]"></div>
+
+    <!-- Header/Navigation -->
+    <header class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-bold font-display">
+                        <span class="text-gradient">XDR AGENCY</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-10">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Home</a>
+                    <a href="#services" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Services</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">About</a>
+                    <a href="#portfolio" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Portfolio</a>
+                    <a href="#testimonials" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Testimonials</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition duration-300">Contact</a>
+                </nav>
+                
+                <!-- Contact Button (Desktop) -->
+                <div class="hidden md:block">
+                    <a href="#contact" class="btn-gradient bg-gradient-primary text-white font-semibold py-2 px-6 rounded-full transition duration-300 shadow-lg hover:shadow-xl">
+                        Get Started
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-primary-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg rounded-b-2xl">
+            <div class="container mx-auto px-4 py-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="text-gray-700 hover:text-primary-600 font-medium transition duration-300 py-2">Home</a>
+                    <a href="#services" class="text-gray-700 hover:text-primary-600 font-medium transition duration-300 py-2">Services</a>
+                    <a href="#about" class="text-gray-700 hover:text-primary-600 font-medium transition duration-300 py-2">About</a>
+                    <a href="#portfolio" class="text-gray-700 hover:text-primary-600 font-medium transition duration-300 py-2">Portfolio</a>
+                    <a href="#testimonials" class="text-gray-700 hover:text-primary-600 font-medium transition duration-300 py-2">Testimonials</a>
+                    <a href="#contact" class="text-gray-700 hover:text-primary-600 font-medium transition duration-300 py-2">Contact</a>
+                    <a href="#contact" class="btn-gradient bg-gradient-primary text-white font-semibold py-3 px-6 rounded-full transition duration-300 text-center mt-2">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 opacity-[0.03] pointer-events-none"></div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 z-10">
+                    <div class="animate-fade-in">
+                        <span class="inline-block py-1 px-3 rounded-full bg-gradient-to-r from-primary-100 to-secondary-100 text-primary-700 text-sm font-semibold mb-6">
+                            Premium Digital Agency
+                        </span>
+                        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold font-display leading-tight mb-6">
+                            Transforming Ideas Into <span class="text-gradient">Digital Excellence</span>
+                        </h1>
+                        <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl">
+                            XDR AGENCY delivers cutting-edge technology solutions and digital marketing strategies to help your business thrive in the digital landscape.
+                        </p>
+                        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                            <a href="#services" class="btn-gradient bg-gradient-primary text-white font-semibold py-4 px-8 rounded-full transition duration-300 shadow-lg hover:shadow-xl text-center">
+                                Explore Services
+                            </a>
+                            <a href="#portfolio" class="bg-white text-gray-800 border-2 border-gray-200 hover:border-primary-300 font-semibold py-4 px-8 rounded-full transition duration-300 shadow-md hover:shadow-lg text-center">
+                                View Our Work
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Scroll Indicator -->
+                    <div class="hidden md:flex justify-center mt-20">
+                        <a href="#services" class="scroll-indicator text-gray-400 hover:text-primary-500 transition duration-300">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 relative z-10">
+                    <div class="relative animate-float">
+                        <div class="absolute inset-0 bg-gradient-radial from-primary-400/20 to-transparent rounded-full blur-3xl"></div>
+                        <img src="https://placehold.co/600x600" alt="Digital Solutions" class="relative z-10 rounded-2xl shadow-2xl">
+                        
+                        <!-- Floating Elements -->
+                        <div class="absolute -top-10 -right-10 bg-white rounded-2xl shadow-xl p-4 animate-pulse-slow">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-primary flex items-center justify-center text-white">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Web Development</h4>
+                                    <p class="text-xs text-gray-500">Premium Solutions</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute -bottom-8 -left-8 bg-white rounded-2xl shadow-xl p-4 animate-pulse-slow" style="animation-delay: 1s;">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-secondary flex items-center justify-center text-white">
+                                    <i class="fas fa-bullhorn"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Digital Marketing</h4>
+                                    <p class="text-xs text-gray-500">Results Driven</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-gray-50 to-white pointer-events-none"></div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-16 animate-on-scroll">
+                <span class="inline-block py-1 px-3 rounded-full bg-gradient-to-r from-primary-100 to-secondary-100 text-primary-700 text-sm font-semibold mb-4">
+                    Our Expertise
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">Premium Services</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    We offer a comprehensive range of digital services to help your business grow and succeed in today's competitive market.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card relative bg-white rounded-2xl shadow-lg p-8 border border-gray-100 animate-on-scroll" style="animation-delay: 0.1s;">
+                    <div class="service-icon w-16 h-16 bg-gradient-to-br from-primary-100 to-primary-200 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-laptop-code text-2xl text-primary-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Web Development</h3>
+                    <p class="text-gray-600 mb-6">
+                        Custom websites and web applications designed with cutting-edge technologies to deliver exceptional user experiences and drive business growth.
+                    </p>
+                    <a href="#contact" class="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center group">
+                        Learn More
+                        <svg class="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card relative bg-white rounded-2xl shadow-lg p-8 border border-gray-100 animate-on-scroll" style="animation-delay: 0.2s;">
+                    <div class="service-icon w-16 h-16 bg-gradient-to-br from-secondary-100 to-secondary-200 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-mobile-alt text-2xl text-secondary-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Mobile App Development</h3>
+                    <p class="text-gray-600 mb-6">
+                        Native and cross-platform mobile applications that deliver seamless experiences across all devices, helping you reach your audience wherever they are.
+                    </p>
+                    <a href="#contact" class="text-secondary-600 hover:text-secondary-700 font-medium inline-flex items-center group">
+                        Learn More
+                        <svg class="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card relative bg-white rounded-2xl shadow-lg p-8 border border-gray-100 animate-on-scroll" style="animation-delay: 0.3s;">
+                    <div class="service-icon w-16 h-16 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-hashtag text-2xl text-primary-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Social Media Marketing</h3>
+                    <p class="text-gray-600 mb-6">
+                        Strategic social media campaigns that boost your brand visibility, engage your target audience, and drive meaningful conversions and customer loyalty.
+                    </p>
+                    <a href="#contact" class="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center group">
+                        Learn More
+                        <svg class="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card relative bg-white rounded-2xl shadow-lg p-8 border border-gray-100 animate-on-scroll" style="animation-delay: 0.4s;">
+                    <div class="service-icon w-16 h-16 bg-gradient-to-br from-secondary-100 to-primary-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-search text-2xl text-secondary-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">SEO Optimization</h3>
+                    <p class="text-gray-600 mb-6">
+                        Data-driven SEO strategies that improve your search engine rankings, increase organic traffic, and help your business get discovered by potential customers.
+                    </p>
+                    <a href="#contact" class="text-secondary-600 hover:text-secondary-700 font-medium inline-flex items-center group">
+                        Learn More
+                        <svg class="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card relative bg-white rounded-2xl shadow-lg p-8 border border-gray-100 animate-on-scroll" style="animation-delay: 0.5s;">
+                    <div class="service-icon w-16 h-16 bg-gradient-to-br from-primary-100 to-primary-200 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-palette text-2xl text-primary-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">UI/UX Design</h3>
+                    <p class="text-gray-600 mb-6">
+                        User-centered design solutions that create intuitive, engaging, and visually stunning interfaces that delight your users and drive conversions.
+                    </p>
+                    <a href="#contact" class="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center group">
+                        Learn More
+                        <svg class="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card relative bg-white rounded-2xl shadow-lg p-8 border border-gray-100 animate-on-scroll" style="animation-delay: 0.6s;">
+                    <div class="service-icon w-16 h-16 bg-gradient-to-br from-secondary-100 to-secondary-200 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-2xl text-secondary-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Digital Marketing</h3>
+                    <p class="text-gray-600 mb-6">
+                        Comprehensive digital marketing strategies that combine multiple channels to maximize your online presence and drive measurable business results.
+                    </p>
+                    <a href="#contact" class="text-secondary-600 hover:text-secondary-700 font-medium inline-flex items-center group">
+                        Learn More
+                        <svg class="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center animate-on-scroll">
+                <a href="#contact" class="btn-gradient bg-gradient-primary text-white font-semibold py-4 px-10 rounded-full transition duration-300 shadow-lg hover:shadow-xl inline-block">
+                    Get a Free Consultation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gray-50 to-transparent pointer-events-none"></div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 animate-on-scroll">
+                    <div class="relative">
+                        <div class="absolute -top-6 -left-6 w-64 h-64 bg-primary-100 rounded-full opacity-70 mix-blend-multiply filter blur-xl animate-pulse-slow"></div>
+                        <div class="absolute -bottom-8 -right-8 w-64 h-64 bg-secondary-100 rounded-full opacity-70 mix-blend-multiply filter blur-xl animate-pulse-slow" style="animation-delay: 1.5s;"></div>
+                        <img src="https://placehold.co/600x600" alt="About XDR AGENCY" class="relative z-10 rounded-2xl shadow-2xl">
+                        
+                        <!-- Floating Elements -->
+                        <div class="absolute top-1/4 -right-10 bg-white rounded-2xl shadow-xl p-4 animate-pulse-slow">
+                            <div class="flex items-center space-x-2">
+                                <div class="text-3xl font-bold text-gradient">10+</div>
+                                <div class="text-sm">Years<br>Experience</div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute bottom-1/4 -left-10 bg-white rounded-2xl shadow-xl p-4 animate-pulse-slow" style="animation-delay: 1s;">
+                            <div class="flex items-center space-x-2">
+                                <div class="text-3xl font-bold text-gradient">250+</div>
+                                <div class="text-sm">Projects<br>Completed</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 lg:pl-16 animate-on-scroll" style="animation-delay: 0.3s;">
+                    <span class="inline-block py-1 px-3 rounded-full bg-gradient-to-r from-primary-100 to-secondary-100 text-primary-700 text-sm font-semibold mb-4">
+                        About Us
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-bold font-display mb-6">We Are XDR AGENCY</h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Founded in 2013, XDR AGENCY has been at the forefront of digital innovation, helping businesses of all sizes transform their operations and achieve their goals through cutting-edge technology and strategic marketing.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Our team of experienced professionals is dedicated to delivering high-quality solutions tailored to your specific needs. We believe in building long-term relationships with our clients based on trust, transparency, and measurable results.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-8 mb-10">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-lightbulb text-primary-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-2">Innovative Approach</h4>
+                                <p class="text-gray-600 text-sm">We stay ahead of industry trends to deliver cutting-edge solutions.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-secondary-100 to-secondary-200 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-users text-secondary-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-2">Client-Focused</h4>
+                                <p class="text-gray-600 text-sm">Your success is our priority. We tailor solutions to your specific needs.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-chart-pie text-primary-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-2">Results-Driven</h4>
+                                <p class="text-gray-600 text-sm">We focus on delivering measurable outcomes that impact your bottom line.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-secondary-100 to-primary-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-globe text-secondary-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-2">Global Reach</h4>
+                                <p class="text-gray-600 text-sm">We've helped clients across industries and around the world.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="btn-gradient bg-gradient-primary text-white font-semibold py-3 px-8 rounded-full transition duration-300 shadow-lg hover:shadow-xl inline-flex items-center">
+                        Let's Work Together
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <span class="inline-block py-1 px-3 rounded-full bg-gradient-to-r from-primary-100 to-secondary-100 text-primary-700 text-sm font-semibold mb-4">
+                    Our Work
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">Featured Projects</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Take a look at some of our recent projects and see how we've helped businesses achieve their digital goals.
+                </p>
+            </div>
+            
+            <!-- Portfolio Filter -->
+            <div class="flex flex-wrap justify-center mb-12 animate-on-scroll">
+                <button class="portfolio-filter-btn active m-2 py-2 px-6 rounded-full bg-gradient-primary text-white font-medium transition duration-300 shadow-md hover:shadow-lg" data-filter="all">
+                    All Projects
+                </button>
+                <button class="portfolio-filter-btn m-2 py-2 px-6 rounded-full bg-white text-gray-700 font-medium transition duration-300 shadow-md hover:shadow-lg hover:bg-gray-50" data-filter="web">
+                    Web Development
+                </button>
+                <button class="portfolio-filter-btn m-2 py-2 px-6 rounded-full bg-white text-gray-700 font-medium transition duration-300 shadow-md hover:shadow-lg hover:bg-gray-50" data-filter="mobile">
+                    Mobile Apps
+                </button>
+                <button class="portfolio-filter-btn m-2 py-2 px-6 rounded-full bg-white text-gray-700 font-medium transition duration-300 shadow-md hover:shadow-lg hover:bg-gray-50" data-filter="marketing">
+                    Digital Marketing
+                </button>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="portfolio-item relative overflow-hidden rounded-2xl shadow-xl group animate-on-scroll" data-category="web" style="animation-delay: 0.1s;">
+                    <img src="https://placehold.co/400x600" alt="E-commerce Platform" class="w-full h-72 object-cover transition duration-700">
+                    <div class="absolute inset-0 flex items-end">
+                        <div class="portfolio-content w-full p-6">
+                            <span class="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-sm text-white text-xs font-semibold mb-2">
+                                Web Development
+                            </span>
+                            <h3 class="text-xl font-semibold text-white mb-1">Luxury E-commerce Platform</h3>
+                            <p class="text-gray-200 text-sm mb-4">A premium online shopping experience for a luxury brand</p>
+                            <a href="#" class="inline-flex items-center text-white bg-white/20 backdrop-blur-sm py-2 px-4 rounded-full text-sm font-medium hover:bg-white/30 transition duration-300">
+                                View Project
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="portfolio-item relative overflow-hidden rounded-2xl shadow-xl group animate-on-scroll" data-category="mobile" style="animation-delay: 0.2s;">
+                    <img src="https://placehold.co/400x600" alt="Mobile App" class="w-full h-72 object-cover transition duration-700">
+                    <div class="absolute inset-0 flex items-end">
+                        <div class="portfolio-content w-full p-6">
+                            <span class="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-sm text-white text-xs font-semibold mb-2">
+                                Mobile App
+                            </span>
+                            <h3 class="text-xl font-semibold text-white mb-1">Health & Fitness Tracker</h3>
+                            <p class="text-gray-200 text-sm mb-4">A comprehensive fitness app with personalized coaching</p>
+                            <a href="#" class="inline-flex items-center text-white bg-white/20 backdrop-blur-sm py-2 px-4 rounded-full text-sm font-medium hover:bg-white/30 transition duration-300">
+                                View Project
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="portfolio-item relative overflow-hidden rounded-2xl shadow-xl group animate-on-scroll" data-category="marketing" style="animation-delay: 0.3s;">
+                    <img src="https://placehold.co/400x600" alt="Social Media Campaign" class="w-full h-72 object-cover transition duration-700">
+                    <div class="absolute inset-0 flex items-end">
+                        <div class="portfolio-content w-full p-6">
+                            <span class="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-sm text-white text-xs font-semibold mb-2">
+                                Digital Marketing
+                            </span>
+                            <h3 class="text-xl font-semibold text-white mb-1">Global Brand Campaign</h3>
+                            <p class="text-gray-200 text-sm mb-4">A multi-channel marketing strategy for international expansion</p>
+                            <a href="#" class="inline-flex items-center text-white bg-white/20 backdrop-blur-sm py-2 px-4 rounded-full text-sm font-medium hover:bg-white/30 transition duration-300">
+                                View Project
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="portfolio-item relative overflow-hidden rounded-2xl shadow-xl group animate-on-scroll" data-category="web" style="animation-delay: 0.4s;">
+                    <img src="https://placehold.co/400x600" alt="SaaS Platform" class="w-full h-72 object-cover transition duration-700">
+                    <div class="absolute inset-0 flex items-end">
+                        <div class="portfolio-content w-full p-6">
+                            <span class="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-sm text-white text-xs font-semibold mb-2">
+                                Web Development
+                            </span>
+                            <h3 class="text-xl font-semibold text-white mb-1">Enterprise SaaS Platform</h3>
+                            <p class="text-gray-200 text-sm mb-4">A scalable business management solution with advanced analytics</p>
+                            <a href="#" class="inline-flex items-center text-white bg-white/20 backdrop-blur-sm py-2 px-4 rounded-full text-sm font-medium hover:bg-white/30 transition duration-300">
+                                View Project
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="portfolio-item relative overflow-hidden rounded-2xl shadow-xl group animate-on-scroll" data-category="mobile" style="animation-delay: 0.5s;">
+                    <img src="https://placehold.co/400x600" alt="Food Delivery App" class="w-full h-72 object-cover transition duration-700">
+                    <div class="absolute inset-0 flex items-end">
+                        <div class="portfolio-content w-full p-6">
+                            <span class="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-sm text-white text-xs font-semibold mb-2">
+                                Mobile App
+                            </span>
+                            <h3 class="text-xl font-semibold text-white mb-1">Food Delivery Platform</h3>
+                            <p class="text-gray-200 text-sm mb-4">A seamless food ordering and delivery experience</p>
+                            <a href="#" class="inline-flex items-center text-white bg-white/20 backdrop-blur-sm py-2 px-4 rounded-full text-sm font-medium hover:bg-white/30 transition duration-300">
+                                View Project
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="portfolio-item relative overflow-hidden rounded-2xl shadow-xl group animate-on-scroll" data-category="marketing" style="animation-delay: 0.6s;">
+                    <img src="https://placehold.co/400x600" alt="SEO Campaign" class="w-full h-72 object-cover transition duration-700">
+                    <div class="absolute inset-0 flex items-end">
+                        <div class="portfolio-content w-full p-6">
+                            <span class="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-sm text-white text-xs font-semibold mb-2">
+                                Digital Marketing
+                            </span>
+                            <h3 class="text-xl font-semibold text-white mb-1">SEO Transformation</h3>
+                            <p class="text-gray-200 text-sm mb-4">A comprehensive SEO strategy that increased traffic by 300%</p>
+                            <a href="#" class="inline-flex items-center text-white bg-white/20 backdrop-blur-sm py-2 px-4 rounded-full text-sm font-medium hover:bg-white/30 transition duration-300">
+                                View Project
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center animate-on-scroll">
+                <a href="#contact" class="btn-gradient bg-gradient-primary text-white font-semibold py-4 px-10 rounded-full transition duration-300 shadow-lg hover:shadow-xl inline-block">
+                    Start Your Project
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-white to-gray-50 pointer-events-none"></div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-16 animate-on-scroll">
+                <span class="inline-block py-1 px-3 rounded-full bg-gradient-to-r from-primary-100 to-secondary-100 text-primary-700 text-sm font-semibold mb-4">
+                    Client Feedback
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">What Our Clients Say</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Don't just take our word for it. Here's what our clients have to say about working with XDR AGENCY.
+                </p>
+            </div>
+            
+            <div class="testimonial-slider animate-on-scroll">
+                <div class="testimonial-track">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-slide p-4">
+                        <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 h-full">
+                            <div class="flex items-center mb-6">
+                                <div class="text-primary-500">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-8 italic">
+                                "XDR AGENCY transformed our online presence with a stunning website and effective digital marketing strategy. Our customer engagement has increased by 150% since working with them. Their team is professional, responsive, and truly cares about our success."
+                            </p>
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/60&x0" alt="Client" class="w-14 h-14 rounded-full object-cover mr-4 border-2 border-primary-100">
+                                <div>
+                                    <h4 class="font-semibold">Sarah Johnson</h4>
+                                    <p class="text-gray-500 text-sm">CEO, Retail Solutions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-slide p-4">
+                        <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 h-full">
+                            <div class="flex items-center mb-6">
+                                <div class="text-primary-500">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-8 italic">
+                                "The mobile app developed by XDR AGENCY has revolutionized how we interact with our customers. The team was professional, responsive, and delivered beyond our expectations. The attention to detail and user experience design is exceptional."
+                            </p>
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/60&x0" alt="Client" class="w-14 h-14 rounded-full object-cover mr-4 border-2 border-primary-100">
+                                <div>
+                                    <h4 class="font-semibold">Michael Chen</h4>
+                                    <p class="text-gray-500 text-sm">CTO, FinTech Innovations</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-slide p-4">
+                        <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 h-full">
+                            <div class="flex items-center mb-6">
+                                <div class="text-primary-500">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-8 italic">
+                                "Their social media marketing expertise helped us reach a wider audience and establish our brand in a competitive market. We've seen a significant ROI from our campaigns and continue to work with XDR AGENCY for all our digital marketing needs."
+                            </p>
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/60&x0" alt="Client" class="w-14 h-14 rounded-full object-cover mr-4 border-2 border-primary-100">
+                                <div>
+                                    <h4 class="font-semibold">Emily Rodriguez</h4>
+                                    <p class="text-gray-500 text-sm">Marketing Director, GrowFast</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-slide p-4">
+                        <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 h-full">
+                            <div class="flex items-center mb-6">
+                                <div class="text-primary-500">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-8 italic">
+                                "Working with XDR AGENCY on our website redesign was a game-changer for our business. Their team took the time to understand our goals and delivered a solution that exceeded our expectations. Our conversion rate has increased by 75%."
+                            </p>
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/60&x0" alt="Client" class="w-14 h-14 rounded-full object-cover mr-4 border-2 border-primary-100">
+                                <div>
+                                    <h4 class="font-semibold">David Wilson</h4>
+                                    <p class="text-gray-500 text-sm">Founder, EcoSolutions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slider Controls -->
+                <div class="flex justify-center mt-10 space-x-4">
+                    <button id="prev-testimonial" class="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:text-primary-600 transition duration-300">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="next-testimonial" class="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:text-primary-600 transition duration-300">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-gray-50 to-white pointer-events-none"></div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-16 animate-on-scroll">
+                <span class="inline-block py-1 px-3 rounded-full bg-gradient-to-r from-primary-100 to-secondary-100 text-primary-700 text-sm font-semibold mb-4">
+                    Get In Touch
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">Start Your Project Today</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Ready to transform your digital presence? Contact us today for a free consultation and quote.
+                </p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row bg-white rounded-3xl shadow-xl overflow-hidden">
+                <div class="lg:w-1/2 p-8 md:p-12 animate-on-scroll">
+                    <h3 class="text-2xl font-semibold mb-6">Send Us a Message</h3>
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-gray-700 font-medium mb-2">Full Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition duration-300" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition duration-300" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition duration-300">
+                        </div>
+                        <div>
+                            <label for="service" class="block text-gray-700 font-medium mb-2">Service Interested In</label>
+                            <select id="service" name="service" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition duration-300">
+                                <option value="" selected disabled>Select a service</option>
+                                <option value="web">Web Development</option>
+                                <option value="mobile">Mobile App Development</option>
+                                <option value="marketing">Digital Marketing</option>
+                                <option value="seo">SEO Optimization</option>
+                                <option value="design">UI/UX Design</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Your Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition duration-300" required></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full btn-gradient bg-gradient-primary text-white font-semibold py-4 px-8 rounded-xl transition duration-300 shadow-lg hover:shadow-xl">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="lg:w-1/2 bg-gradient-primary p-8 md:p-12 text-white animate-on-scroll" style="animation-delay: 0.3s;">
+                    <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Our Location</h4>
+                                <p class="text-white/80">123 Innovation Street, Baku, Azerbaijan</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-phone-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Call Us</h4>
+                                <p class="text-white/80">+994 50 123 4567</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Email Us</h4>
+                                <p class="text-white/80">info@xdragency.az</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-clock text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Working Hours</h4>
+                                <p class="text-white/80">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12">
+                        <h4 class="font-semibold mb-4">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition duration-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition duration-300">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition duration-300">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-20 pb-10">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div>
+                    <a href="#" class="text-2xl font-bold font-display mb-6 inline-block">
+                        <span class="bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">XDR AGENCY</span>
+                    </a>
+                    <p class="text-gray-400 mb-8">
+                        Transforming ideas into digital excellence. We help businesses of all sizes achieve their goals through innovative technology solutions and strategic marketing.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-full flex items-center justify-center transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-full flex items-center justify-center transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-full flex items-center justify-center transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-full flex items-center justify-center transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">About</a></li>
+                        <li><a href="#portfolio" class="text-gray-400 hover:text-white transition duration-300">Portfolio</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white transition duration-300">Testimonials</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Our Services</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Web Development</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Mobile App Development</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">UI/UX Design</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Digital Marketing</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">SEO Optimization</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Social Media Marketing</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Newsletter</h3>
+                    <p class="text-gray-400 mb-6">
+                        Subscribe to our newsletter for the latest updates and insights on digital trends.
+                    </p>
+                    <form class="space-y-4">
+                        <div class="relative">
+                            <input type="email" placeholder="Your Email" class="w-full px-4 py-3 rounded-xl bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                            <button type="submit" class="absolute right-2 top-2 bg-gradient-primary text-white p-2 rounded-lg">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">
+                    &copy; 2023 XDR AGENCY. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white', 'shadow-md');
+                navbar.classList.remove('bg-transparent');
+            } else {
+                navbar.classList.remove('bg-white', 'shadow-md');
+                navbar.classList.add('bg-transparent');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Portfolio filter
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        const filterButtons = document.querySelectorAll('.portfolio-filter-btn');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active', 'bg-gradient-primary', 'text-white'));
+                filterButtons.forEach(btn => btn.classList.add('bg-white', 'text-gray-700'));
+                
+                // Add active class to clicked button
+                button.classList.add('active', 'bg-gradient-primary', 'text-white');
+                button.classList.remove('bg-white', 'text-gray-700');
+                
+                const filter = button.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Testimonial slider
+        const testimonialTrack = document.querySelector('.testimonial-track');
+        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+        const prevButton = document.getElementById('prev-testimonial');
+        const nextButton = document.getElementById('next-testimonial');
+        
+        let currentIndex = 0;
+        let slideWidth = 0;
+        let slidesToShow = 1;
+        
+        function updateSliderDimensions() {
+            const viewportWidth = window.innerWidth;
+            
+            if (viewportWidth >= 1024) {
+                slidesToShow = 3;
+            } else if (viewportWidth >= 768) {
+                slidesToShow = 2;
+            } else {
+                slidesToShow = 1;
+            }
+            
+            slideWidth = testimonialTrack.clientWidth / slidesToShow;
+            
+            testimonialSlides.forEach(slide => {
+                slide.style.width = `${slideWidth}px`;
+            });
+            
+            updateSliderPosition();
+        }
+        
+        function updateSliderPosition() {
+            testimonialTrack.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        }
+        
+        prevButton.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSliderPosition();
+            }
+        });
+        
+        nextButton.addEventListener('click', () => {
+            if (currentIndex < testimonialSlides.length - slidesToShow) {
+                currentIndex++;
+                updateSliderPosition();
+            }
+        });
+        
+        window.addEventListener('resize', updateSliderDimensions);
+        updateSliderDimensions();
+        
+        // Scroll animation
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        
+        function checkScroll() {
+            animatedElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight * 0.9) {
+                    element.classList.add('animated');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+        
+        // Form submission
+        const contactForm = document.getElementById('contact-form');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const formDataObj = {};
+            formData.forEach((value, key) => {
+                formDataObj[key] = value;
+            });
+            
+            // Here you would typically send the data to your server
+            console.log('Form submitted:', formDataObj);
+            
+            // Show success message
+            alert('Thank you for your message! We will get back to you soon.');
+            
+            // Reset form
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>
